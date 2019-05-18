@@ -2,13 +2,13 @@
 <h2>Product list</h2>
 <div class="form-row form-group">
     <div class="col">
-      <input type="text" class="form-control" placeholder="Name Product">
+      <input type="text" class="form-control" [(ngModel)]="name" placeholder="Name Product">
     </div>
     <div class="col">
-      <input type="text" class="form-control" placeholder="Price">
+      <input type="text" class="form-control" [(ngModel)]="price" placeholder="Price">
     </div>
     <div class="col">
-      <input type="submit" class="btn btn-primary" value="Add">
+      <input type="submit" class="btn btn-primary" value="Add" (click) = 'addProd()'>
      </div>
 </div>
 <div class="form-row form-group">
@@ -25,27 +25,11 @@
       <th></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngFor = "let n of prodList">
     <tr>
-      <th scope="row">1</th>
-      <td>Product 1</td>
-      <td>$1000</td>
-      <td><button type="button" class="close">
-          <span aria-hidden="true">&times;</span>
-        </button></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Product 2</td>
-      <td>$50</td>
-      <td><button type="button" class="close">
-          <span aria-hidden="true">&times;</span>
-        </button></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Product 3</td>
-      <td>$50</td>
+      <th scope="row">{{n.id}}</th>
+      <td>{{n.name}}</td>
+      <td>{{n.price | currency}}</td>
       <td><button type="button" class="close">
           <span aria-hidden="true">&times;</span>
         </button></td>
@@ -54,8 +38,10 @@
   <tfoot>
     <td>Total</td>
     <td></td>
-    <td>$200</td>
+    <td>{{subTotalPrice | currency}}</td>
     <td></td>
   </tfoot>
 </table>
 
+{{ name }}
+{{ price }}
