@@ -34,13 +34,29 @@ export class AppComponent {
     this.prodList.push({id: this.prodList.length+1, name: this.name, price: Number(this.price)})
     this.name = '';
     this.price = undefined;
+    this.quantityProdInList();
+
+  }
+  delProd(id: number):void {
+    this.prodList.splice(this.checkArrIdVal(this.prodList, id), 1);
+    this.quantityProdInList();
+    console.log("del");
+  }
+
+  checkArrIdVal(array, val):number {
+    for (let i: number = 0; i < array.length; i++){
+      if (array[i].id === val){
+        return i;
+      }
+    }
+  }
+
+  quantityProdInList(){
     this.subTotalPrice = 0;
     for(let i:number = 0; i < this.prodList.length; i++){
       this.subTotalPrice += this.prodList[i].price;
       console.log(this.prodList[i].price);
     }
-    console.log(this.subTotalPrice);
-    console.log(this.prodList)
 
   }
 

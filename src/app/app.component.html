@@ -30,7 +30,7 @@
       <th scope="row">{{n.id}}</th>
       <td>{{n.name}}</td>
       <td>{{n.price | currency}}</td>
-      <td><button type="button" class="close">
+      <td><button type="button" class="close" (click)="delProd(n.id)">
           <span aria-hidden="true">&times;</span>
         </button></td>
     </tr>
