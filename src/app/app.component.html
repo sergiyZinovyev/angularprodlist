@@ -25,7 +25,7 @@
       <th></th>
     </tr>
   </thead>
-  <tbody *ngFor = "let n of prodList | search : searchText">
+  <tbody *ngFor = "let n of prodList | search : searchText | filtr">
     <tr>
       <th scope="row">{{n.id}}</th>
       <td>{{n.name}}</td>
