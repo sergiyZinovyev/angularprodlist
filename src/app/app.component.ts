@@ -14,17 +14,17 @@ export class AppComponent {
   prodList = [
     {
       id: 1,
-      name: "product1",
+      name: "product 1",
       price: 1
     },
     {
       id: 2,
-      name: "product2",
+      name: "product 2",
       price: 2
     },
     {
       id: 3,
-      name: "product3",
+      name: "product 3",
       price: 3
     }
   ];
