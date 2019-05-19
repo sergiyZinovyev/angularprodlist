@@ -9,6 +9,7 @@ export class AppComponent {
 
   name: string;
   price: number;
+  searchText: string;
   subTotalPrice: number = 0;
 
   prodList = [
