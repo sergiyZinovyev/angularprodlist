@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { List } from './type';
 
 @Pipe({
   name: 'filtr',
@@ -6,8 +7,20 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FiltrPipe implements PipeTransform {
 
-  transform(array:{id: number, name: string, price: number}[], args?: any): any {
-    return array.sort((a: {id: number, name: string, price: number}, b: {id: number, name: string, price: number}) => b.price - a.price);
-  }
+  transform(array:List[], args?: {direct: string, column: string}): List[] {
+    if(args.direct == 'desc'){
+      return array.sort((a: List, b: List) => {
+        if (a[args.column] > b[args.column]) return -1;
+        if (a[args.column] < b[args.column]) return 1;
+      });
+    }
 
+    if(args.direct == 'asc'){
+      return array.sort((a: List, b: List) => {
+        if (a[args.column] > b[args.column]) return 1;
+        if (a[args.column] < b[args.column]) return -1;
+      });
+    }
+
+  }
 }

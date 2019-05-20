@@ -1,6 +1,7 @@
 
-<h2>Product list</h2>
-<div class="form-row form-group">
+<div class="container">
+  <h2>Product list</h2>
+  <div class="form-row form-group">
     <div class="col">
       <input type="text" class="form-control" [(ngModel)]="name" placeholder="Name Product">
     </div>
@@ -9,37 +10,38 @@
     </div>
     <div class="col">
       <input type="submit" class="btn btn-primary" value="Add" (click) = 'addProd()'>
-     </div>
-</div>
-<div class="form-row form-group">
-  <div class="col-4">
-    <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search">
     </div>
+  </div>
+  <div class="form-row form-group">
+    <div class="col-4">
+      <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search">
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr class="cursorPointer">
+        <th scope="col" (click) = "changeFiltr('id')"># {{idDirect}}</th>
+        <th scope="col" (click) = "changeFiltr('name')">Product {{nameDirect}}</th>
+        <th scope="col" (click) = "changeFiltr('price')">Price {{priceDirect}}</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngFor = "let n of prodList | search : searchText | filtr : filtrParam">
+      <tr>
+        <th scope="row">{{n.id}}</th>
+        <td>{{n.name}}</td>
+        <td>{{n.price | currency}}</td>
+        <td><button type="button" class="close" (click)="delProd(n.id)">
+            <span aria-hidden="true">&times;</span>
+          </button></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <td>Total</td>
+      <td></td>
+      <td>{{subTotalPrice | currency}}</td>
+      <td></td>
+    </tfoot>
+  </table>
 </div>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Product</th>
-      <th scope="col">Price</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody *ngFor = "let n of prodList | search : searchText | filtr">
-    <tr>
-      <th scope="row">{{n.id}}</th>
-      <td>{{n.name}}</td>
-      <td>{{n.price | currency}}</td>
-      <td><button type="button" class="close" (click)="delProd(n.id)">
-          <span aria-hidden="true">&times;</span>
-        </button></td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <td>Total</td>
-    <td></td>
-    <td>{{subTotalPrice | currency}}</td>
-    <td></td>
-  </tfoot>
-</table>
 
