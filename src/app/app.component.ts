@@ -11,7 +11,6 @@ export class AppComponent {
   name: string;
   price: number;
   searchText: string;
-  subTotalPrice: number;
   priceDirect: string;
   nameDirect: string;
   idDirect: string;
@@ -40,7 +39,6 @@ export class AppComponent {
   ];
 
   ngOnInit(){
-    this.quantityProdInList()
   }
 
   addProd(): void {
@@ -48,12 +46,10 @@ export class AppComponent {
     this.prodList.push({id: this.prodList.length+1, name: this.name, price: Number(this.price)})
     this.name = '';
     this.price = undefined;
-    this.quantityProdInList();
   }
 
   delProd(id: number):void {
     this.prodList.splice(this.checkArrIdVal(this.prodList, id), 1);
-    this.quantityProdInList();
   }
 
   checkArrIdVal(array: List[], val: number):number {
@@ -61,13 +57,6 @@ export class AppComponent {
       if (array[i].id === val){
         return i;
       }
-    }
-  }
-
-  quantityProdInList(): void{
-    this.subTotalPrice = 0;
-    for(let i:number = 0; i < this.prodList.length; i++){
-      this.subTotalPrice += this.prodList[i].price;
     }
   }
 
