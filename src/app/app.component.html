@@ -39,7 +39,7 @@
     <tfoot>
       <td>Total</td>
       <td></td>
-      <td>{{subTotalPrice | currency}}</td>
+      <td>{{prodList | search : searchText | summFiltrArr | currency}}</td>
       <td></td>
     </tfoot>
   </table>

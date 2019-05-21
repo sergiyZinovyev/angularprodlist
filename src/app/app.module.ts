@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { SearchPipe } from './search.pipe';
 import { FiltrPipe } from './filtr.pipe';
+import { SummFiltrArrPipe } from './summ-filtr-arr.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchPipe,
-    FiltrPipe
+    FiltrPipe,
+    SummFiltrArrPipe
   ],
   imports: [
     BrowserModule,
